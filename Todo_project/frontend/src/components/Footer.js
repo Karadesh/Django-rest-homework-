@@ -42,4 +42,4 @@ const FooterList = ({footers}) => {
  }
  
  
- export default MenuList
+ export default FooterList
