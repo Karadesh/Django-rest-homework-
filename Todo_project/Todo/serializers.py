@@ -10,16 +10,22 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     users = CharField(max_length=32)
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ['name','repo_link', 'users']
     
     def create(self, validated_data):
-        return Project(**validated_data)
+        return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.repo_link = validated_data.get('repo_link', instance.repo_link)
-        instance.users = validated_data.get('users', instance.users)
-        return instance
+        return super().update(instance, validated_data)
+    
+ #   def create(self, validated_data):
+ #       return Project(**validated_data)
+
+#    def update(self, instance, validated_data):
+#        instance.name = validated_data.get('name', instance.name)
+#        instance.repo_link = validated_data.get('repo_link', instance.repo_link)
+#        instance.users = validated_data.get('users', instance.users)
+#        return instance
     
 class TodoSerializer(serializers.HyperlinkedModelSerializer):
  #   note_project = ProjectSerializer()
