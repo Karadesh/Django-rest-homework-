@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from authnapp.views import ListUserModelViewSet
+from Todo.views import ProjectModelViewSet, TodoModelViewSet
 
 router = DefaultRouter()
 router.register('ListUsers', ListUserModelViewSet)
+router.register('Project', ProjectModelViewSet)
+router.register('Todo', TodoModelViewSet)
 
 
 
