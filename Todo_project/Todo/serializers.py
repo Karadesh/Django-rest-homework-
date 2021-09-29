@@ -7,7 +7,7 @@ from authnapp.serializers import ListUserSerializer
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
  #   name = serializers.CharField(max_length=32)
  #   repo_link = serializers.URLField
-    users = CharField(max_length=32)
+    users = CharField()
     class Meta:
         model = Project
         fields = ['name','repo_link', 'users']
@@ -29,7 +29,9 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     
 class TodoSerializer(serializers.HyperlinkedModelSerializer):
  #   note_project = ProjectSerializer()
- #   user = ListUserSerializer
+    is_active = serializers.BooleanField
+
     class Meta:
        model = Todo
        fields = '__all__'
+       

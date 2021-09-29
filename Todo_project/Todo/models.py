@@ -7,7 +7,7 @@ from django.db import models
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=32, unique=True)
+    name = models.CharField(max_length=32)
     repo_link = models.URLField(max_length=100, default=None)
     users = models.ForeignKey(ListUser, on_delete=models.CASCADE, default=None)
 
