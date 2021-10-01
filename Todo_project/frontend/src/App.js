@@ -6,6 +6,8 @@ import MenuList from './components/Menu'
 import FooterList from './components/Footer';
 import TodoList from './components/Todo';
 import ProjectList from './components/Project';
+import {HashRouter, Route, Link} from 'react-router-dom'
+
 
 
 class App extends React.Component {
@@ -39,6 +41,18 @@ class App extends React.Component {
                 this.setState(
                 {
                     'todos': todos
+                }
+            )
+
+        
+        }).catch(error => console.log(error))
+
+        axios.get('http://127.0.0.1:8000/api/Project/')
+        .then(response => {
+            const projects = response.data
+                this.setState(
+                {
+                    'project': projects
                 }
             )
 
@@ -80,17 +94,20 @@ class App extends React.Component {
                 <div>
                     <MenuList menus={this.state.menus}/>
                 </div>
-                <div>     
-                    <UserList users={this.state.users}/>
-                </div>
-                <div>     
-                    <TodoList todovars={this.state.todos}/>
-                </div>
+                <HashRouter>
+                    <nav>
+                        <ul>
+                            <li><Link to='/'>Users</Link></li>
+                            <li><Link to='/todo'>Todo</Link></li>
+                            <li><Link to='/project'>Project</Link></li>
+                        </ul>
+                    </nav> 
+                    <Route path='/' exact component={()=><UserList users={this.state.users}/>}/>     
+                    <Route path='/todo' exact component={()=><TodoList todovars={this.state.todos}/>}/>  
+                    <Route path='/project' exact component={()=><ProjectList items={this.state.project}/>}/>
+                </HashRouter>
                 <div>
                     <FooterList footers={this.state.footers}/>
-                </div>
-                <div>     
-                    <ProjectList items={this.state.project}/>
                 </div>
            </div>
        )

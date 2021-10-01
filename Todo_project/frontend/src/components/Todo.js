@@ -39,7 +39,7 @@ const TodoList = ({todovars}) => {
             <th>
                 is_active
             </th>
-            {Array(todovars).map((todovar) => <TodoItem todovar={todovar} />)}
+            {todovars.map((todovar) => <TodoItem todovar={todovar} />)}
         </table>
     )
  }
