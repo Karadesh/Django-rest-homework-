@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authnapp',
     'corsheaders',
     'Todo',
+    'rest_framework.authtoken',
 ]
 
 #auth model
@@ -136,6 +137,18 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:3001'
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',        
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

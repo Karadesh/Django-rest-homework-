@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 from Todo import views
 from authnapp.views import ListUserModelViewSet
 from Todo.views import ProjectModelViewSet, TodoModelViewSet
+from rest_framework.authtoken import views
 
 router = DefaultRouter()
 router.register('ListUsers', ListUserModelViewSet)
@@ -31,6 +32,7 @@ router.register('Todo', TodoModelViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', views.obtain_auth_token),
     path('generic/retrieve/<int:pk>/', ListUserModelViewSet),
     path('api/', include(router.urls)),
 ]
