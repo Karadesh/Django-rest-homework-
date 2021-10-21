@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'graphene_django',
     'drf_yasg',
     'rest_framework',
     'authnapp',
-    'corsheaders',
     'Todo',
     'rest_framework.authtoken',
 ]
@@ -135,9 +135,18 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 
+
+
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:3001'
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://localhost:3000",
+]
+
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "https://localhost:3000",
 ]
 
 
@@ -160,7 +169,6 @@ GRAPHENE = {
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_REPLACE_HTTPS_REFERER = False
 HOST_SCHEME = 'http://'
 SECURE_PROXY_SSL_HEADER = None
 SECURE_SSL_REDIRECT = False

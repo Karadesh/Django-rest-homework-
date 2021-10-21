@@ -18,13 +18,15 @@ const MenuItem = ({menu}) => {
 const MenuList = ({menus}) => {
     return (
         <table>
-            <th>
-                main
-            </th>
-            <th>
-                api
-            </th>
-            {menus.map((menu) => <MenuItem menu={menu} />)}
+            <tr>
+                <th>
+                    main
+                </th>
+                <th>
+                    api
+                </th>
+                {menus.map((menu) => <MenuItem menu={menu} />)}
+            </tr>
         </table>
     )
  }

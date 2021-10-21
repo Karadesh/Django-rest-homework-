@@ -24,19 +24,21 @@ const FooterItem = ({footer}) => {
 const FooterList = ({footers}) => {
     return (
         <table>
-            <th>
-                main
-            </th>
-            <th>
-                api
-            </th>
-            <th>
-                info
-            </th>
-            <th>
-                contacts
-            </th>
-            {footers.map((footer) => <FooterItem footer={footer} />)}
+            <tr>
+                <th>
+                    main
+                </th>
+                <th>
+                    api
+                </th>
+                <th>
+                    info
+                </th>
+                <th>
+                    contacts
+                </th>
+                {footers.map((footer) => <FooterItem footer={footer} />)}
+            </tr>
         </table>
     )
  }
